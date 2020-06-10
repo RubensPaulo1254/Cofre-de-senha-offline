@@ -14,20 +14,25 @@ def cadastroPrimeiroAcesso(login2,passd):
     conn.close()
     
 def start():
-    print("[1] Cadastrar")
-    print("[2] Login")
-    op = input()
-    system('cls')
-    if(op == "1"):
-        
-        cadastroPrimeiroAcesso(login,passd)
-    if(op == "2"):
-        print("login:")
-        op1 = input()
-        print("senha:")
-        op2 = input()
+    while(True):
+        print("[1] Cadastrar")
+        print("[2] Login")
+        op = input()
         system('cls')
-        login(op1, op2)
+        if(op == "1"):
+            print("Digite um login:")
+            op1 = input()
+            print("Digite uma senha:")
+            op2 = input()
+            system('cls')
+            cadastroPrimeiroAcesso(op1,op2)
+        if(op == "2"):
+            print("login:")
+            op1 = input()
+            print("senha:")
+            op2 = input()
+            system('cls')
+            login(op1, op2)
         
 def login(op1, op2):
     
@@ -55,26 +60,30 @@ def cadastro():
     conn.commit()
     conn.close()
     system('cls')
+    print("Cadastro realizado com sucesso")
+    time.sleep(3)
+    system('cls')
 
             
 def main():
-    print("[1] Cadastrar nova senha")
-    print("[2] Acessar senha")
-    print("[3] Excluir senha")
-    print("[4] Atualizar senha")
-    op = input()
-    if(op == "1"):
-        cadastro()
-
-    elif(op=="2"):
-        conn = sqlite3.connect('date.db')
-        cursor = conn.cursor()
-        cursor.execute("""
-        SELECT * FROM dados;
-        """)
-        for linha in cursor.fetchall():
-            print(linha)
-        conn.close
+    while(True):
+        print("[1] Cadastrar nova senha")
+        print("[2] Acessar senha")
+        print("[3] Excluir senha")
+        print("[4] Atualizar senha")
+        op = input()
+        if(op == "1"):
+            cadastro()
+            system('cls')
+        elif(op=="2"):
+            conn = sqlite3.connect('date.db')
+            cursor = conn.cursor()
+            cursor.execute("""
+            SELECT * FROM dados;
+            """)
+            for linha in cursor.fetchall():
+                print(linha)
+            conn.close
         
 
 
