@@ -76,6 +76,7 @@ def main():
             cadastro()
             system('cls')
         elif(op=="2"):
+            system('cls')
             conn = sqlite3.connect('date.db')
             cursor = conn.cursor()
             cursor.execute("""
@@ -84,7 +85,8 @@ def main():
             for linha in cursor.fetchall():
                 print(linha)
             conn.close
-        
+            input("Digite para continuar")
+            system('cls')
 
 
 start()
